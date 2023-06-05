@@ -1,12 +1,30 @@
 import ActiveLink from "../ActiveLink/ActiveLink";
 
+const menuRoutes = [
+    {
+        text: 'Home',
+        href: '/'
+    },
+    {
+        text: 'About',
+        href: '/about'
+    },
+    {
+        text: 'Contact',
+        href: '/contact'
+    },
+    {
+        text: 'Pricing',
+        href: '/pricing'
+    }
+];
 
 export default function NavBar (props) {
     return (
         <nav className={props.className}>
-            <ActiveLink directTo="/" className="nav-link" text="Home"/>
-            <ActiveLink directTo="/about" className="nav-link" text="About"/>
-            <ActiveLink directTo="/contact" className="nav-link" text="Contact"/>
+            {menuRoutes.map(route => (
+                <ActiveLink key={route.href} href={route.href} className="nav-link" text={route.text}/>
+            ))}
         </nav>
     );
 }

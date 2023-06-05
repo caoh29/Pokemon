@@ -14,6 +14,6 @@ export default function ActiveLink (props) {
     const pathName = usePathname();
 
     return (
-        <Link style={pathName === props.directTo ? null : style} href={props.directTo} className={props.className}>{props.text}</Link>
+        <Link style={pathName === props.href ? null : style} href={props.href} className={props.className}>{props.text}</Link>
     );
 }
