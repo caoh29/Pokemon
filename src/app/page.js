@@ -1,7 +1,13 @@
-export default function Home() {
+import fetchPokemons from "@/api/pokeApi"
+
+export default async function Home() {
+
+	const data = await fetchPokemons();
+	const pokemonNameList = data.results.map((pokemon) => pokemon.name);
+
 	return (
 		<div>
-			<h1>Home Page</h1>
+			{pokemonNameList.map((pokemon) => <h1 key={pokemon}>{pokemon}</h1>)}
 		</div>
 	)
 }
