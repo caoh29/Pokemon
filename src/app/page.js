@@ -4,22 +4,19 @@ import Image from "next/image";
 export default async function Home() {
 
 	const data = await fetchPokemons();
-	const pokemonNameList = data.results.map((pokemon) => pokemon.name);
-	const pokemonUrlList = data.results.map((pokemon) => pokemon.url);
-
-	const pokemonImageList = await Promise.all(pokemonUrlList.map(async (pokemonUrl) => {
-		const response = await fetch(pokemonUrl);
-		const data = await response.json();
-		return data.sprites.other.dream_world.front_default;
+	const pokemonsList = data.results.map((pokemon, index) => ({
+		...pokemon,
+		id: index + 1,
+		image: `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/${index + 1}.svg`
 	}));
 
 	return (
 		<div>
-			{pokemonNameList.map((pokemon, index) => (
-				<>
-					<h1 key={pokemon}>#{index + 1} - {pokemon}</h1>
-					<Image src={pokemonImageList[index]} width={200} height={200} key={index} alt={pokemon} />
-				</>
+			{pokemonsList.map((pokemon) => (
+				<div key={pokemon.id}>
+					<h1>#{pokemon.id} - {pokemon.name}</h1>
+					<Image src={pokemon.image} width={0} height={0} alt={pokemon.name} style={{ width: 'auto', height: 'auto' }}/>
+				</div>
 			))}
 		</div>
 	)
