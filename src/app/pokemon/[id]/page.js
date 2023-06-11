@@ -18,10 +18,10 @@ export default async function PokemonInfo(props) {
                 <div className="col-span-2">
                     <p>Sprites:</p>
                     <div className="flex flex-wrap justify-center">
-                        <img src={pokemon.sprites.front_default} width={0} height={0} alt={pokemonName} className="w-52 h-52" />
-                        <img src={pokemon.sprites.back_default} width={0} height={0} alt={pokemonName} className="w-52 h-52" />
-                        <img src={pokemon.sprites.front_shiny} width={0} height={0} alt={pokemonName} className="w-52 h-52" />
-                        <img src={pokemon.sprites.back_shiny} width={0} height={0} alt={pokemonName} className="w-52 h-52" />
+                        <Image src={pokemon.sprites.front_default} width={128} height={128} alt={pokemonName} className="w-52 h-52" />
+                        <Image src={pokemon.sprites.back_default} width={128} height={128} alt={pokemonName} className="w-52 h-52" />
+                        <Image src={pokemon.sprites.front_shiny} width={128} height={128} alt={pokemonName} className="w-52 h-52" />
+                        <Image src={pokemon.sprites.back_shiny} width={128} height={128} alt={pokemonName} className="w-52 h-52" />
                     </div>
                 </div>
             </div>
