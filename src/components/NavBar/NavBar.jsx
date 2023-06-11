@@ -14,8 +14,8 @@ const menuRoutes = [
         href: '/contact'
     },
     {
-        text: 'Pricing',
-        href: '/pricing'
+        text: 'Favorites',
+        href: '/favorites'
     }
 ];
 
