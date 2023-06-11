@@ -1,29 +1,30 @@
-'use client';
-
 import fetchPokemonById from "@/api/fetchPokemon";
-import { usePathname } from "next/navigation";
-import { useState, useEffect } from "react";
+import PokemonCard from "@/components/PokemonCard/PokemonCard";
+import Image from "next/image";
 
-
-export default function PokemonInfo () {
-
-    const pathName = usePathname();
-
-    const [pokemon, setPokemon] = useState(null);
-
-    useEffect(() => {
-        async function getPokemonData() {
-            const pokemonData = await fetchPokemonById(pathName);
-            setPokemon(pokemonData);
-        }
-        getPokemonData();
-    }, [pathName]);
-
+export default async function PokemonInfo(props) {
+    
+    const pokemon = await fetchPokemonById(props.params.id);
+    const pokemonName = pokemon.name;
 
     return (
-        <div>
-            <h1>Name: {pokemon && pokemon.name}</h1>
-            <h1>Weight: {pokemon && pokemon.weight}</h1>
+        <div className="flex min-h-screen py-2">
+            <PokemonCard key={pokemon.id} pokemonId={pokemon.id} clickable={false}>
+                <Image src={pokemon.sprites.other.dream_world.front_default} width={0} height={0} alt={pokemonName} className="w-52 h-52" />
+            </PokemonCard>
+            <div className="grid grid-cols-2 grid-rows-2 gap-2 items-center justify-items-start my-3.5 mx-auto w-9/12 h-64 bg-blue-100 p-3.5 text-center text-gray-700 font-bold text-xl border-2 border-blue-200 rounded-lg shadow-lg">
+                <h1 className="col-span-1 row-span-1 self-start">{pokemonName}</h1>
+                <button className="self-start justify-self-end bg-slate-400">Add to Favorites</button>
+                <div className="col-span-2">
+                    <p>Sprites:</p>
+                    <div className="flex flex-wrap justify-center">
+                        <img src={pokemon.sprites.front_default} width={0} height={0} alt={pokemonName} className="w-28 h-28" />
+                        <img src={pokemon.sprites.back_default} width={0} height={0} alt={pokemonName} className="w-28 h-28" />
+                        <img src={pokemon.sprites.front_shiny} width={0} height={0} alt={pokemonName} className="w-28 h-28" />
+                        <img src={pokemon.sprites.back_shiny} width={0} height={0} alt={pokemonName} className="w-28 h-28" />
+                    </div>
+                </div>
+            </div>
         </div>
     );
-}
+};

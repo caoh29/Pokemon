@@ -19,7 +19,7 @@ export default async function Home() {
 	return (
 		<div className="flex flex-wrap items-center justify-items-center justify-center min-h-screen py-2">
 			{pokemonsList.map((pokemon) => (
-				<PokemonCard key={pokemon.id} pokemonId={pokemon.id} >
+				<PokemonCard key={pokemon.id} pokemonId={pokemon.id} clickable={true}>
 					<h1 className="text-xl text-center font-bold my-2">#{pokemon.id} - {capitalizeFirstLetter(pokemon.name)}</h1>
 					<Image src={pokemon.image} width={0} height={0} alt={pokemon.name} className="w-44 h-44"/>
 				</PokemonCard>
