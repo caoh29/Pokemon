@@ -17,11 +17,11 @@ export default async function PokemonInfo(props) {
                 <button className="self-start justify-self-end bg-slate-400">Add to Favorites</button>
                 <div className="col-span-2">
                     <p>Sprites:</p>
-                    <div className="flex flex-wrap justify-center">
-                        <Image src={pokemon.sprites.front_default} width={128} height={128} alt={pokemonName} className="w-52 h-52" />
-                        <Image src={pokemon.sprites.back_default} width={128} height={128} alt={pokemonName} className="w-52 h-52" />
-                        <Image src={pokemon.sprites.front_shiny} width={128} height={128} alt={pokemonName} className="w-52 h-52" />
-                        <Image src={pokemon.sprites.back_shiny} width={128} height={128} alt={pokemonName} className="w-52 h-52" />
+                    <div className="flex flex-wrap justify-center gap-10">
+                        <Image src={pokemon.sprites.front_default} width={128} height={128} alt={pokemonName} className="w-44 h-44" />
+                        <Image src={pokemon.sprites.back_default} width={128} height={128} alt={pokemonName} className="w-44 h-44" />
+                        <Image src={pokemon.sprites.front_shiny} width={128} height={128} alt={pokemonName} className="w-44 h-44" />
+                        <Image src={pokemon.sprites.back_shiny} width={128} height={128} alt={pokemonName} className="w-44 h-44" />
                     </div>
                 </div>
             </div>
