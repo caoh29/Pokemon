@@ -12,6 +12,8 @@ export const metadata = {
   keywords: "pokemon, pokedex, pokemon information, pokemon list",
 }
 
+const origin = process.env.NEXT_PUBLIC_ORIGIN;
+
 export default function RootLayout({ children }) {
   return (
 
@@ -21,6 +23,10 @@ export default function RootLayout({ children }) {
         <meta name="author" content={metadata.author} />
         <meta name="description" content={metadata.description} />
         <meta name="keywords" content={metadata.keywords} />
+
+        <meta property="og:title" content="Pokedex" />
+        <meta property="og:description" content="Information about different pokemons" />
+        <meta property="og:image" content={`${origin}/img/banner.png`} />
       </Head>
       <body className={inter.className}>
         <NavBar className="mb-4" />
