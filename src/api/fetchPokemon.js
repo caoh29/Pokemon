@@ -1,10 +1,11 @@
 async function fetchPokemonByName(name) {
 
-    const response = await fetch(`https://pokeapi.co/api/v2/pokemon/${name}`);
+    const response = await fetch(`https://pokemon-backend-dg1j.onrender.com/api/pokemon/${name}`);
     const data = await response.json();
     const pokemon = {
-        id: data.id,
+        id: data._id,
         name: data.name,
+        number: data.number,
         sprites: data.sprites
     };
     return pokemon;
