@@ -1,15 +1,26 @@
+"use client";
+
 import fetchPokemons from "@/api/pokeApi"
 import PokemonCard from "@/components/PokemonCard/PokemonCard";
 import Image from "next/image";
+import { useState, useEffect } from "react";
 
-export default async function Home() {
+export default function Home() {
 
-	const data = await fetchPokemons();
-	const pokemonsList = data.results.map((pokemon, index) => ({
-		...pokemon,
-		id: index + 1,
-		image: `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/${index + 1}.svg`
-	}));
+	const [pokemonsList, setPokemonsList] = useState([]);
+
+	useEffect(() => {
+		const updatePokemons = async () => {
+			const data = await fetchPokemons();
+			const pokemonsList = data.results.map((pokemon, index) => ({
+				...pokemon,
+				id: index + 1,
+				image: `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/${index + 1}.svg`
+			}));
+			setPokemonsList(pokemonsList);
+		}
+		updatePokemons();
+	}, [])
 
 	function capitalizeFirstLetter(string) {
 		return string.charAt(0).toUpperCase() + string.slice(1);
