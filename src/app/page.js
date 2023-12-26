@@ -2,9 +2,9 @@
 
 import { useState, useEffect } from "react";
 
+import Image from "next/image";
 import fetchPokemons from "@/api/pokeApi"
 import PokemonCard from "@/components/PokemonCard/PokemonCard";
-import Image from "next/image";
 import { capitalizeFirstLetter } from "@/lib/index";
 
 
