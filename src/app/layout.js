@@ -29,7 +29,7 @@ export default function RootLayout({ children }) {
         <meta property="og:image" content={`${origin}/img/banner.png`} />
       </Head>
       <body className={inter.className}>
-        <NavBar className="mb-4" />
+        <NavBar className="p-4 bg-orange-300 text-center" />
         {children}
       </body>
     </html>

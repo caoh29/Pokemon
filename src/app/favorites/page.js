@@ -14,11 +14,11 @@ export default function Favorites() {
 
 	const favorites = getFavorites();
 	
-	if (favorites.length === 0) return <h1>No Favorites </h1>;
+	if (favorites.length === 0) return <h1>No Favorites</h1>;
 
 	
 	return (
-		<div className="flex flex-wrap gap bg-black">
+		<div className="flex flex-wrap gap bg-black h-screen">
 			{favorites.map((pokeId) => (
 				<PokemonCard key={pokeId} pokemonName={pokeId} clickable={true}>
 					<Image src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/${pokeId}.svg`} width={0} height={0} alt={`Pokemon ${pokeId} image`} className="w-52 h-52" />

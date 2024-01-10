@@ -4,8 +4,8 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 
 const style = {
-    color: '#0070f3',
-    textDecoration: 'underline',
+    color: 'black',
+    textDecoration: 'none',
     margin: '1rem'
 }
 
