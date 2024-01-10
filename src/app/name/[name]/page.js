@@ -1,4 +1,4 @@
-import fetchPokemonByName from "@/api/fetchPokemon";
+// import fetchPokemonByName from "@/api/fetchPokemon";
 // import fetchPokemons from "@/api/pokeApi";
 import FavoritesButton from "@/components/Button/FavoritesButton";
 import PokemonCard from "@/components/PokemonCard/PokemonCard";
@@ -12,13 +12,25 @@ import Image from "next/image";
 //     }));
 // }
 
+async function fetchPokemonByName(name) {
+    const response = await fetch(`https://pokemon-backend-dg1j.onrender.com/api/pokemon/${name}`, { next: { revalidate: 60 } });
+    const data = await response.json();
+    const pokemon = {
+        id: data._id,
+        name: data.name,
+        number: data.number,
+        sprites: data.sprites
+    };
+    return pokemon;
+}
+
 export default async function PokemonInfo({ params }) {
     
     const { name } = params;
     const pokemon = await fetchPokemonByName(name);
 
     return (
-        <div className="flex min-h-screen py-2">
+        <div className="flex min-h-screen py-2 bg-black">
             <PokemonCard key={name} pokemonName={name} clickable={false}>
                 <Image src={pokemon.sprites.other.dream_world.front_default} width={0} height={0} alt={name} className="w-52 h-52" />
             </PokemonCard>

@@ -18,7 +18,7 @@ export default function Favorites() {
 
 	
 	return (
-		<div className="flex flex-wrap gap">
+		<div className="flex flex-wrap gap bg-black">
 			{favorites.map((pokeId) => (
 				<PokemonCard key={pokeId} pokemonName={pokeId} clickable={true}>
 					<Image src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/${pokeId}.svg`} width={0} height={0} alt={`Pokemon ${pokeId} image`} className="w-52 h-52" />
